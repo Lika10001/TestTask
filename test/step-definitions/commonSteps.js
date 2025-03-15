@@ -8,8 +8,3 @@ Given(/^I am on the '(.*)' page$/, async (page) => {
     AllureReporter.addStep('Open Main Page');
     await Browser.openUrl(MAIN_PAGE_URL);
 });
-
-After(async () => { 
-    const screenShot = await Browser.addScreenshot();
-    AllureReporter.addAttachment('Screenshot', Buffer.from(screenShot, 'base64'), 'image/png');
-});
