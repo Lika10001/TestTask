@@ -14,7 +14,6 @@ export class ElementsList {
     async getListOfElements() {
         Logger.info(`Get all elements "${this.name}"`);
 
-        await this.state().waitForExist();
         const listOfElements = await $$(this.locator);
         Logger.info(`Found '${listOfElements.length}' elements`);
 
@@ -25,4 +24,24 @@ export class ElementsList {
         }
         return elements;
     }
+
+    async waitForListToUpdate() {
+        const elements = await this.getListOfElements();
+        if (elements.length === 0) {
+            throw new Error("No elements found in the list.");
+        }
+    
+        const firstElement = elements[0];  
+        const oldText = await firstElement.getText();
+    
+        await browser.waitUntil(async () => {
+            const updatedElements = await this.getListOfElements();
+            const newText = await updatedElements[0].getText();
+            return newText !== oldText;
+        }, {
+            timeout: 5000,
+            timeoutMsg: "List content did not update within 5 seconds"
+        });
+    }
+
 }
