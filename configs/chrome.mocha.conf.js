@@ -7,15 +7,5 @@ export const config = {
         specs: [
             '../test/specs/**/*.js'
         ],
-        capabilities: [
-            {
-                browserName: "chrome",
-                "goog:chromeOptions": {
-                    prefs: {
-                        "download.default_directory": downloadDir
-                    }
-                },
-            },
-        ],
     },
 };
