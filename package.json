@@ -17,5 +17,8 @@
     "chai": "^5.1.0",
     "fs-extra": "^11.2.0",
     "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@wdio/cucumber-framework": "^9.11.0"
   }
 }
