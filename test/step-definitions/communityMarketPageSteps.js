@@ -25,7 +25,14 @@ When(/^I click first item$/, async() => {
 });
 
 When(/^I sort price by '(.*)' order$/, async(orderName) => {
-    return CommunityMarketPage.clickOnPriceFilterButton();
+    const ascOrderIcon = '▲';
+    const descOrderIcon = '▼';
+    const filterIconText = await CommunityMarketPage.getFilterIconText();
+
+    if ((orderName == 'ascending' && filterIconText != ascOrderIcon) || 
+        (orderName == 'descending' && filterIconText != descOrderIcon)) {
+        return CommunityMarketPage.clickOnPriceFilterButton();
+    } 
 });
 
 Then(/^I can see that prices are sorted in '(.*)' order$/, async(orderName) => {

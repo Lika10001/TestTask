@@ -13,6 +13,9 @@ class CommunityMarketPage extends BasePage {
         this.searchTagsList = new ElementsList(Label,'//*[@class="market_searchedForTerm"]', 'Search Tags List');
         this.priceFilterButton = new Button('//*[contains(@class,"market_listing_their_price") and @data-sorttype="price"]',
             'Price Filter Button');
+        this.filterIcon = new Label('//*[contains(@class,"market_listing_their_price") and @data-sorttype="price"]/span',
+            'Filter Icon Label'
+        );
     }
 
     async clickOnAdvancedOptionsButton() {
@@ -37,6 +40,10 @@ class CommunityMarketPage extends BasePage {
     async clickOnResultTableItem(number) {
         const rows = await this.resultTableElements.getListOfElements();
         return rows[number - 1].click();
+    }
+
+    async getFilterIconText() {
+        return this.filterIcon.getText();
     }
 
     async clickOnPriceFilterButton() {
