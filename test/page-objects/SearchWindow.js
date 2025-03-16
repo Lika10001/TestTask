@@ -14,23 +14,23 @@ class SearchWindow extends BasePage {
     }
 
     async clickOnGameDropdown() {
-        await this.gamesDropdown.click();
+        return this.gamesDropdown.click();
     }
 
     async clickOnGameItem(item) {
-        await this.gameItem(item).click();
+        return this.gameItem(item).click();
     }
 
     async selectHeroInDropdown(heroName) {
         await this.heroDropdown.state().waitForDisplayed();
-        await this.heroDropdown.selectOptionByText(heroName);
+        return this.heroDropdown.selectOptionByText(heroName);
     }
     
     async selectRarityInDropdown(rarityName) {
-        await this.rarityItem(rarityName).click();
+        return this.rarityItem(rarityName).click();
     }
     async clickOnSearchButton() {
-        await this.searchButton.click();
+        return this.searchButton.click();
     }
 }
 

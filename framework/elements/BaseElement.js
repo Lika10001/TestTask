@@ -73,7 +73,6 @@ export default class BaseElement {
         const logMsg = byJS ? ' by JS executing' : '';
         Logger.info(`${this.log()}Click at element${logMsg}`);
         await this.state().waitForExist();
-        //await this.state().waitForClickable();
 
         const element = await this._get$();
         if (byJS) {

@@ -135,3 +135,6 @@ allure-results/
 
 # Allure report folder
 allure-report/
+
+# package-lock.json file
+package-lock.json

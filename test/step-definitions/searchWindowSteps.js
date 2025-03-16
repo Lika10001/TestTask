@@ -8,17 +8,17 @@ Then (/^I can see that window with advanced options is displayed$/, async() => {
 
 When(/^I select game '(.*)'$/, async(gameName) => {
     await SearchWindow.clickOnGameDropdown();
-    await SearchWindow.clickOnGameItem(gameName);
+    return SearchWindow.clickOnGameItem(gameName);
 });
 
 When(/^I select hero '(.*)'$/, async(heroName) => {  
-    await SearchWindow.selectHeroInDropdown(heroName);
+    return SearchWindow.selectHeroInDropdown(heroName);
 });
 
 When(/^I select rarity '(.*)'$/, async(rarityName) => {  
-    await SearchWindow.selectRarityInDropdown(rarityName);
+    return SearchWindow.selectRarityInDropdown(rarityName);
 });
 
 When(/^I click on 'Search'$/, async() => {
-    await SearchWindow.clickOnSearchButton();
+    return SearchWindow.clickOnSearchButton();
 });

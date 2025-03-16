@@ -10,11 +10,11 @@ class MainPage extends BasePage {
     }
 
     async hoverOnCommunityButton() {
-        await this.communityButton.moveTo();
+        return this.communityButton.moveTo();
     }
 
     async clickOnMarketButton() {
-        await this.marketButton.click();
+        return this.marketButton.click();
     }
 
 }

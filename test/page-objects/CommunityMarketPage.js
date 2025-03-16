@@ -16,31 +16,31 @@ class CommunityMarketPage extends BasePage {
     }
 
     async clickOnAdvancedOptionsButton() {
-        await this.advancedOptionsButton.click();
+        return this.advancedOptionsButton.click();
     }
 
     async isResultTableDisplayed() {
         return this.resultTable.state().waitForDisplayed();
     }
 
-    async isTagDisplayed(tagName) {
+    async #isTagDisplayed(tagName) {
         const tagElements = await this.searchTagsList.getListOfElements();
         const tagTexts = await Promise.all(tagElements.map(async el => await el.getText())); 
         return tagTexts.includes(tagName);
     }
     
     async AreAllTagsDisplayed(tags) {
-        const results = await Promise.all(tags.map(tag => this.isTagDisplayed(tag)));
+        const results = await Promise.all(tags.map(tag => this.#isTagDisplayed(tag)));
         return results.every(isDisplayed => isDisplayed);
     }
 
     async clickOnResultTableItem(number) {
         const rows = await this.resultTableElements.getListOfElements();
-        await rows[number - 1].click();
+        return rows[number - 1].click();
     }
 
     async clickOnPriceFilterButton() {
-        await this.priceFilterButton.click();       
+        return this.priceFilterButton.click();       
     }
 
     async isPriceSortedCorrectly(orderName) {      

@@ -9,15 +9,18 @@ class ItemPage extends BasePage {
         this.heroLabel = new Label('//*[@class="descriptor" and contains(text(),"Used By:")]', 'Hero Label');
     }
 
-    async isTextInElementCorrect(element, expectedText) {
+    async #isTextInElementCorrect(element, expectedText) {
         const text = await element.getText();
         return text.includes(expectedText);
     }
 
     async isItemInfoCorrect(tags) {
-        return this.isTextInElementCorrect(this.gameNameLabel, tags[0]) &&
-            this.isTextInElementCorrect(this.heroLabel, tags[1]) &&
-            this.isTextInElementCorrect(this.itemRarityLabel, tags[2]);
+        const elementsList = [this.gameNameLabel,  this.heroLabel, this.itemRarityLabel];
+        for (let i = 0; i < tags.length; i++) {
+            const isCorrect = await this.#isTextInElementCorrect(elementsList[i], tags[i]);
+            if (!isCorrect) return false;
+        }
+        return true;
     }
 }
 

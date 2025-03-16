@@ -30,7 +30,7 @@ Scenario: As a user, I can sort searched items by price
     And I click on 'Search'
     Then I can see that Table with results is loaded
     And I can see that tags 'Dota 2', 'Anti-Mage', 'Uncommon' in 'Showing results for' are displayed
-    When I sort price by ascending order
-    Then I can see that prices are sorted in ascending order
-    When I sort price by descending order
-    Then I can see that prices are sorted in descending order
+    When I sort price by 'ascending' order
+    Then I can see that prices are sorted in 'ascending' order
+    When I sort price by 'descending' order
+    Then I can see that prices are sorted in 'descending' order

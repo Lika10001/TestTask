@@ -8,5 +8,5 @@ Then(/^I can see that 'Main' page is opened$/, async() => {
 
 When(/^I navigate to 'Community Market'$/, async() => {
     await MainPage.hoverOnCommunityButton();
-    await MainPage.clickOnMarketButton();
+    return MainPage.clickOnMarketButton();
 });
